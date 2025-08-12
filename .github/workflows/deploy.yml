@@ -19,18 +19,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          path: Invento-SRS-Representation
       - uses: actions/setup-node@v4
         with:
           node-version: "18"
           cache: "npm"
       - name: Install dependencies
-        run: |
-          cd "Invento-SRS-Representation"
-          npm install
+        run: npm install
+        working-directory: Invento-SRS-Representation
       - name: Build
-        run: |
-          cd "Invento-SRS-Representation"
-          npm run export
+        run: npm run export
+        working-directory: Invento-SRS-Representation
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
